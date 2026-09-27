@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Cheapest</title>
+  <meta name="description" content="חיפוש המחיר הזול ביותר באלי אקספרס">
+  <meta name="theme-color" content="#e8594a">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <img src="icon.svg" alt="" width="32" height="32">
+      <h1>Cheapest</h1>
+      <span class="tagline">המחיר הכי טוב באלי אקספרס</span>
+    </div>
+    <form id="search-form" class="search" role="search">
+      <input id="q" type="search" name="q" placeholder="מה מחפשים? למשל: wireless earbuds" autocomplete="off" required>
+      <button type="submit">חיפוש</button>
+    </form>
+  </header>
+
+  <div id="demo-banner" class="banner" hidden>
+    מצב דמו: הנתונים לדוגמה בלבד. כדי לקבל תוצאות אמיתיות, מוסיפים מפתחות API לקובץ ההגדרות (ההסבר נמצא בקובץ <bdi>README</bdi>).
+  </div>
+
+  <section id="controls" class="controls" hidden>
+    <div class="control">
+      <label for="sort">מיון</label>
+      <select id="sort">
+        <option value="price">מחיר כולל משלוח (זול → יקר)</option>
+        <option value="value">הכי שווה</option>
+        <option value="orders">הכי הרבה מכירות</option>
+      </select>
+    </div>
+    <div class="control">
+      <label for="min-price">מחיר מ-</label>
+      <input id="min-price" type="number" min="0" step="1" inputmode="decimal" placeholder="₪">
+    </div>
+    <div class="control">
+      <label for="max-price">עד</label>
+      <input id="max-price" type="number" min="0" step="1" inputmode="decimal" placeholder="₪">
+    </div>
+    <div class="control">
+      <label for="min-orders">מינ׳ מכירות</label>
+      <select id="min-orders">
+        <option value="0">הכול</option>
+        <option value="10">10+</option>
+        <option value="100">100+</option>
+        <option value="1000">1,000+</option>
+      </select>
+    </div>
+    <div class="control">
+      <label for="min-rating">מינ׳ משוב חיובי</label>
+      <select id="min-rating">
+        <option value="0">הכול</option>
+        <option value="90">90%+</option>
+        <option value="95">95%+</option>
+        <option value="98">98%+</option>
+      </select>
+    </div>
+  </section>
+
+  <main>
+    <p id="status" class="status" aria-live="polite">חפשו מוצר כדי לראות את ההצעות הזולות ביותר.</p>
+    <div id="results" class="grid"></div>
+  </main>
+
+  <template id="card-tpl">
+    <article class="card">
+      <a class="img-wrap" target="_blank" rel="noopener">
+        <img loading="lazy" alt="">
+        <span class="badge best" hidden>🏆 הכי שווה</span>
+        <span class="badge disc" hidden></span>
+      </a>
+      <div class="body">
+        <h2 class="title" dir="auto"></h2>
+        <div class="prices">
+          <span class="total"></span>
+          <span class="orig"></span>
+        </div>
+        <div class="shipping"></div>
+        <ul class="stats">
+          <li class="rating" title="אחוז משובים חיוביים"></li>
+          <li class="orders" title="מכירות"></li>
+          <li class="score" title="ציון 'הכי שווה' (0–100)"></li>
+        </ul>
+        <div class="store"></div>
+        <a class="buy" target="_blank" rel="noopener">לקנייה באלי אקספרס ↗</a>
+      </div>
+    </article>
+  </template>
+
+  <script src="demo-data.js"></script>
+  <script src="score.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
