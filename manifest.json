@@ -3,7 +3,7 @@
   "short_name": "Cheapest",
   "lang": "he",
   "dir": "rtl",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#f6f5f3",
   "theme_color": "#e8594a",

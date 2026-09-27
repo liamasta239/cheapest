@@ -1,6 +1,7 @@
 // Caches the app shell so it opens fast from the home screen. Search results always go to the network.
-const CACHE = 'cheapest-v1';
-const SHELL = ['/', '/index.html', '/styles.css', '/app.js', '/score.js', '/demo-data.js', '/icon.svg', '/manifest.json'];
+// Paths are relative so it also works under a sub-path such as GitHub Pages (/cheapest/).
+const CACHE = 'cheapest-v2';
+const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'score.js', 'demo-data.js', 'icon.svg', 'manifest.json'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
